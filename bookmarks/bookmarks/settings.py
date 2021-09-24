@@ -25,7 +25,7 @@ SECRET_KEY = ')6!j1b1oh*6&2aknw5xhen3_d+hqe_9@(=8t)@2$2#z0z_6zv^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
+    'django_extensions',
     
 ]
 
@@ -128,3 +130,15 @@ LOGOUT_URL = "logout"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+]
+
+SOCIAL_AUTH_FACEBOOK_KEY = '980182306107123'
+SOCIAL_AUTH_FACEBOOK_SECRET = '9854917c5f5ea79740c143fd242026ca'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '143090019300-6j1t1un2me3esgnooum1nbss5ouqtbk8.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'aicUQGjC4IKik-CO8WJZth0-' 
