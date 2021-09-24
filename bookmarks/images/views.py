@@ -6,6 +6,7 @@ from .forms import ImageCreateForm
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from common.decorators import ajax_required
 
 @login_required
 def image_create(request):
@@ -32,6 +33,7 @@ def image_detail(request, id, slug):
     return render(request,'images/image/detail.html',{'section': 'images',
         'image': image})
 
+@ajax_required
 @login_required
 @require_POST
 def image_like(request):
